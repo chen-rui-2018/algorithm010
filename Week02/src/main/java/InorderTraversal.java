@@ -3,6 +3,7 @@ import model.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author： chenr
@@ -27,9 +28,11 @@ public class InorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> nodeList = new ArrayList<>();
 
-        helper_in(root,nodeList);
-        helper_pre(root,nodeList);
-        helper_post(root,nodeList);
+//        helper_in(root,nodeList);
+//        helper_pre(root,nodeList);
+//        helper_post(root,nodeList);
+
+        helper_in2(root,nodeList);
 
         return nodeList;
     }
@@ -51,6 +54,27 @@ public class InorderTraversal {
         }
 
     }
+
+    /**
+     * 中序遍历2 --  栈
+     * @param root
+     * @param nodeList
+     */
+    private void helper_in2(TreeNode root, List<Integer> nodeList) {
+        Stack<TreeNode> stack = new Stack<>();
+        while (! stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            nodeList.add(root.val);
+            root = root.right;
+
+        }
+
+    }
+
     /**
      * 前序遍历
      * @param root
