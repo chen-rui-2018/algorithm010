@@ -11,7 +11,7 @@ import java.util.List;
 public class GenerateParenthesis {
     public static void main(String[] args) {
         int n = 3;
-        List<String> list =  new GenerateParenthesis().generateParenthesis(n);
+        List<String> list =  new GenerateParenthesisTwo().generateParenthesis(n);
         for (String s : list) {
             System.out.println(s);
         }
