@@ -38,34 +38,32 @@ public class LevelOrder  {
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
 
-        // 结果集
+         // 结果集
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
             return res;
         }
-
-        // 要遍历的 目标列表
-        LinkedList<TreeNode> queue = new LinkedList<>();
+        // 要遍历的目标列表
+        List<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        while (queue.size() > 0) {
+        while (queue.size() > 0){
+            List<Integer>  temp = new ArrayList<>();
             int size = queue.size();
-            // 当层遍历的结果
-            List<Integer> temp = new ArrayList<>();
             for (int i = 0; i < size; i++) {
-                TreeNode node =  queue.remove();
+                TreeNode node =  ((LinkedList<TreeNode>) queue).remove();
                 temp.add(node.val);
-                if (node.left != null) {
-                    queue.add(node.left);
-                }
                 if (node.right != null) {
                     queue.add(node.right);
+                }
+                if (node.left != null) {
+                    queue.add(node.left);
                 }
             }
             res.add(temp);
         }
-
         return res;
     }
+
     /**
      * 递归
      * @param root

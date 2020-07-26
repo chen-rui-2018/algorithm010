@@ -7,9 +7,10 @@
  */
 public class CountSubstrings {
     public static void main(String[] args) {
-        String s = "abc";
+        String s = "cbbc";
         System.out.println(new CountSubstrings().countSubstrings(s));
         System.out.println(new CountSubstrings().countSubstrings2(s));
+        System.out.println(new CountSubstrings().countSubstrings3(s));
     }
     public int countSubstrings(String s) {
         int N = s.length(), ans = 0;
@@ -54,5 +55,21 @@ public class CountSubstrings {
             ans += (v + 1) / 2;
         }
         return ans;
+    }
+    public int countSubstrings3(String s) {
+        int result = 0;
+        int n = s.length();
+        // dp[i][j] 表示[i,j]的字符是否为回文串
+        boolean [][] dp = new boolean[n][n];
+        // 要求dp[i][j] 需要知道dp[i+1][j-1]
+        for (int i = n-1; i >=0 ; i--) {
+            for (int j = i; j < n; j++) {
+                if (s.charAt(i) == s.charAt(j) && (j-i <= 2 || dp[i+1][j-1])) {
+                    dp[i][j] = true;
+                    result++;
+                }
+            }
+        }
+        return result;
     }
 }
