@@ -7,7 +7,7 @@
  */
 public class NumDecodings {
     public static void main(String[] args) {
-      String s = "226";
+      String s = "12";
         int  result =  new NumDecodings().numDecodings(s);
         System.out.println(result);
     }

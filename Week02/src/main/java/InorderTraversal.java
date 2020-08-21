@@ -13,13 +13,23 @@ import java.util.Stack;
  */
 public class InorderTraversal {
     public static void main(String[] args) {
-        TreeNode treeNode = new TreeNode(1);
+        TreeNode treeNode1 = new TreeNode(1);
         TreeNode treeNode2 = new TreeNode(2);
         TreeNode treeNode3 = new TreeNode(3);
+        TreeNode treeNode4 = new TreeNode(4);
+        TreeNode treeNode5 = new TreeNode(5);
+        TreeNode treeNode6 = new TreeNode(6);
+        TreeNode treeNode7 = new TreeNode(7);
+        TreeNode treeNode8 = new TreeNode(8);
 
-        treeNode.right = treeNode2;
+        treeNode1.right = treeNode5;
+        treeNode1.left =treeNode2;
+        treeNode2.right = treeNode4;
         treeNode2.left = treeNode3;
-        List<Integer> list = new InorderTraversal().inorderTraversal(treeNode);
+        treeNode5.left = treeNode6 ;
+        treeNode5.right = treeNode8  ;
+        treeNode6.right= treeNode7;
+        List<Integer> list = new InorderTraversal().inorderTraversal(treeNode1);
         for (Integer i : list){
             System.out.print(i+" ");
         }
@@ -32,7 +42,7 @@ public class InorderTraversal {
 //        helper_pre(root,nodeList);
 //        helper_post(root,nodeList);
 
-        helper_in2(root,nodeList);
+        helper_post(root,nodeList);
 
         return nodeList;
     }
